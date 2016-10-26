@@ -33,6 +33,11 @@ gulp.task('environment', function () {
     projectDir.copy(configFile, destDir.path('env.json'), { overwrite: true });
 });
 
+gulp.task('fonts', function () {
+  return gulp.src(srcDir.path('stylesheets/*.{eot,svg,ttf,woff,woff2}'))
+    .pipe(gulp.dest(destDir.path("stylesheets")));
+});
+
 gulp.task('watch', function () {
     var beepOnError = function (done) {
         return function (err) {
@@ -51,4 +56,4 @@ gulp.task('watch', function () {
     }));
 });
 
-gulp.task('build', ['bundle', 'less', 'environment']);
+gulp.task('build', ['bundle', 'less', 'environment', "fonts"]);

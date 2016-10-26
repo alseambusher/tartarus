@@ -13,8 +13,5 @@ var glob = require("glob");
 var app = remote.app;
 var appDir = jetpack.cwd(app.getAppPath());
 
-var appName = appDir.read('package.json', 'json').name;
-
 document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('greet').innerHTML = appName;
 });
