@@ -1,0 +1,29 @@
+{
+  "name": "tartarus",
+  "version": "0.0.1",
+  "description": "Time based encrypt",
+  "main": "background.js",
+  "dependencies": {
+    "nedb": "latest",
+    "fs-jetpack": "^0.9.0",
+    "open": "latest",
+    "tail": "latest",
+    "dialog-polyfill": "latest"
+  },
+  "engines": {
+    "node": "latest"
+  },
+   "bin": {
+     "tartarus": "bin/tartarus.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alseambusher/tartarus"
+  },
+  "keywords": [
+    "tartarus",
+    "encrypt"
+  ],
+  "author": "Suresh Alse",
+  "license": "MIT"
+}

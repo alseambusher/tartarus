@@ -1,28 +1,48 @@
 {
-  "name": "tartarus",
-  "version": "0.0.1",
-  "description": "Time based encrypt",
-  "main": "index.js",
+  "build": {
+    "appId": "com.alse.tartarus",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "resources/windows/icon.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "installerHeaderIcon": "resources/windows/setup-icon.ico"
+    },
+    "mac": {
+      "icon": "resources/osx/icon.icns"
+    },
+    "dmg": {
+      "icon": "resources/osx/dmg-icon.icns",
+      "background": "resources/osx/dmg-background.png"
+    }
+  },
+  "directories": {
+    "buildResources": "resources"
+  },
   "scripts": {
-    "start": "node app.js"
+    "postinstall": "node_modules/.bin/install-app-deps",
+    "build": "gulp build",
+    "prerelease": "gulp build --env=production",
+    "start": "gulp start"
   },
-  "dependencies": {
-    "nedb": "latest"
-  },
-  "engines": {
-    "node": "latest"
-  },
-   "bin": {
-     "tartarus": "bin/tartarus.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alseambusher/tartarus"
-  },
-  "keywords": [
-    "tartarus",
-    "encrypt"
-  ],
-  "author": "Suresh Alse",
-  "license": "MIT"
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "electron": "1.3.3",
+    "electron-mocha": "^3.0.0",
+    "fs-jetpack": "^0.9.0",
+    "gulp": "^3.9.0",
+    "gulp-batch": "^1.0.5",
+    "gulp-less": "^3.0.3",
+    "gulp-plumber": "^1.1.0",
+    "gulp-util": "^3.0.6",
+    "gulp-watch": "^4.3.5",
+    "mocha": "^3.0.2",
+    "rollup": "^0.34.7",
+    "source-map-support": "^0.4.2",
+    "spectron": "^3.3.0",
+    "yargs": "^4.2.0"
+  }
 }
