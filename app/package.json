@@ -7,8 +7,8 @@
     "nedb": "latest",
     "fs-jetpack": "^0.9.0",
     "open": "latest",
-    "tail": "latest",
-    "dialog-polyfill": "latest"
+    "dialog-polyfill": "latest",
+    "material-design-lite": "latest"
   },
   "engines": {
     "node": "latest"
