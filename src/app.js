@@ -9,9 +9,11 @@ var fs = require("fs");
 var dialogPolyfill = require("dialog-polyfill");
 const {ipcRenderer} = require('electron');
 var glob = require("glob");
+import { default as drawer } from "./drawer";
 
 var app = remote.app;
 var appDir = jetpack.cwd(app.getAppPath());
 
 document.addEventListener('DOMContentLoaded', function () {
+  drawer(document.querySelector(".mdl-layout__drawer"));
 });

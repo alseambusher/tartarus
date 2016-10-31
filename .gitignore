@@ -13,6 +13,7 @@ Thumbs.db
 /app/**/*.map
 /app/tomcat
 /app/Karma-*
+/app/*.js
 
 /dist
 *.swp

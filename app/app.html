@@ -6,7 +6,7 @@
 
   <link href="stylesheets/main.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="node_modules/material-design-lite/material.min.css">
-<script src="node_modules/material-design-lite/material.min.js"></script>
+  <script src="node_modules/material-design-lite/material.min.js"></script>
 
   <script src="helpers/context_menu.js"></script>
   <script src="helpers/external_links.js"></script>
@@ -15,8 +15,58 @@
 </head>
 <body>
   <div class="container">
-    <h1 id="greet">Tartarus</h1>
-  </div>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+    mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">Tartarus</span>
+        <div class="mdl-layout-spacer"></div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+        mdl-textfield--floating-label mdl-textfield--align-right">
+        <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp">
+        </div>
+        <div class="material-icons mdl-badge mdl-badge--overlap" id="force_count_badge" data-badge="1">account_box</div>
+        <div class="mdl-tooltip" data-mdl-for="force_count_badge">Force count</div>
+      </div>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer"></div>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">Material</th>
+            <th>Quantity</th>
+            <th>Unit price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
+            <td>25</td>
+            <td>$2.90</td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
+            <td>50</td>
+            <td>$1.25</td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
+            <td>10</td>
+            <td>$2.35</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+</div>
 </div>
 
 </body>

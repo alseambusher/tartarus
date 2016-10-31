@@ -1,4 +1,5 @@
 {
+  "appname": "Tartarus",
   "name": "development",
   "description": "Development build",
   "args": {"-Xms": "128", "-Xmx": "2048" }
