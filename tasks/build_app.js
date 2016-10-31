@@ -8,6 +8,7 @@ var plumber = require('gulp-plumber');
 var jetpack = require('fs-jetpack');
 var bundle = require('./bundle');
 var utils = require('./utils');
+var ejs = require("gulp-ejs");
 
 var projectDir = jetpack;
 var srcDir = jetpack.cwd('./src');
@@ -38,6 +39,12 @@ gulp.task('fonts', function () {
     .pipe(gulp.dest(destDir.path("stylesheets")));
 });
 
+gulp.task('view', function () {
+  gulp.src(srcDir.path("./ejs/app.ejs"))
+  .pipe(ejs({}, {ext:'.html'}))
+  .pipe(gulp.dest(destDir.path("")));
+});
+
 gulp.task('watch', function () {
     var beepOnError = function (done) {
         return function (err) {
@@ -56,4 +63,4 @@ gulp.task('watch', function () {
     }));
 });
 
-gulp.task('build', ['bundle', 'less', 'environment', "fonts"]);
+gulp.task('build', ['bundle', 'less', 'environment', "fonts", "view"]);
