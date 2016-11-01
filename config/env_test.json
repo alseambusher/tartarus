@@ -1,5 +1,6 @@
 {
   "appname": "Tartarus",
   "name": "test",
-  "description": "Add here any environment specific stuff you like."
+  "description": "Add here any environment specific stuff you like.",
+  "githubURL": "https://github.com/alseambusher/tartarus"
 }

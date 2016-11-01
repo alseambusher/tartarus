@@ -1,5 +1,7 @@
 /*jshint esversion: 6 */
 import env from './env';
+import { set_current_content } from "./instance";
+
 export var items = {
   Files: {
     icon: "folder"
@@ -13,7 +15,8 @@ export var items = {
   Github: {
     icon: "code",
     onclick: () => {
-      console.log("open");
+      let shell = require('electron').shell;
+      shell.openExternal(env.githubURL);
     }
   }
 };
@@ -33,6 +36,11 @@ export default function(container) {
       } else {
         itemDOM.onclick = () => {
           document.querySelector(".mdl-layout__header .mdl-layout-title").innerHTML = Object.keys(items)[i];
+          set_current_content(Object.keys(items)[i]);
+          document.querySelectorAll(".content").forEach((node) => {
+            node.style.display = "none";
+          });
+          document.getElementById("content_" + Object.keys(items)[i]).style.display = "inline";
         };
       }
     });
