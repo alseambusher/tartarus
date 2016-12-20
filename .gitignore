@@ -15,6 +15,7 @@ Thumbs.db
 /app/Karma-*
 /app/*.js
 /app/*.html
+/app/db/*.db
 
 /dist
 *.swp
