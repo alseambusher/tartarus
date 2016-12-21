@@ -1,32 +1,23 @@
 /*jshint esversion: 6*/
 //load database
+import { Files } from "./files";
+import { Schedules } from "./schedules";
+import { Settings } from "./settings";
+
 var Datastore = require('nedb');
-var tartarusDb = new Datastore({ filename: __dirname + '/db/tartarus.db' });
-var filesDb = new Datastore({ filename: __dirname + '/db/files.db' });
-var schedulesDb = new Datastore({ filename: __dirname + '/db/schedules.db' });
 
-function settings(key){
-  let data = {};
-  if (!key) {
-    key = "test";
-  }
-  return data;
-}
+export var settingsDbFile = "/db/settings.db";
+export var filesDbFile = "/db/files.db";
+export var schedulesDbFile = "/db/schedules.db";
 
-class Settings {
+var settingsDb = new Datastore({ filename: __dirname + settingsDbFile });
+var filesDb = new Datastore({ filename: __dirname + filesDbFile });
+var schedulesDb = new Datastore({ filename: __dirname + schedulesDbFile });
 
-}
-
-class Files {
-
-}
-
-class Schedules {
-
-}
+export var files, schedules, settings;
 
 export function load(){
-  tartarusDb.loadDatabase(function (err) {
+  settingsDb.loadDatabase(function (err) {
     if (err) throw err;
   });
   filesDb.loadDatabase(function (err) {
@@ -35,4 +26,8 @@ export function load(){
   schedulesDb.loadDatabase(function (err) {
     if (err) throw err;
   });
+
+  files = new Files(filesDb);
+  settings = new Settings(settingsDb);
+  schedules = new Schedules(schedulesDb);
 }

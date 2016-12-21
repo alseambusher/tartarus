@@ -1,27 +1,29 @@
 <dialog class="mdl-dialog" id="dialog_add_Files">
   <h4 class="mdl-dialog__title">Add Files / Folders</h4>
   <div class="mdl-dialog__content">
-    <input type="file" />
-    <input type="date" />
-    <input type="time" />
-    <input type="time" />
+    <input type="file" class="mdl-textfield__input" multiple/>
+    <input type="date" class="mdl-textfield__input"/>
+    <input type="time" class="mdl-textfield__input"/>
   </div>
   <div class="mdl-dialog__actions">
-    <button type="button" class="mdl-button">Ok</button>
-    <button type="button" class="mdl-button close">Cancel</button>
+    <button type="button" class="mdl-button" id="button_add_Files_ok">Ok</button>
+    <button type="button" class="mdl-button close" onclick="document.getElementById('dialog_add_Files').close()">Cancel</button>
   </div>
 </dialog>
 
 <dialog class="mdl-dialog" id="dialog_add_Schedules">
-  <h4 class="mdl-dialog__title">Allow data collection?</h4>
+  <h4 class="mdl-dialog__title">Add Files / Folders</h4>
   <div class="mdl-dialog__content">
-    <p>
-      Allowing us to collect data will.
-    </p>
+    <input type="file" class="mdl-textfield__input" multiple/>
+    <input type="date" class="mdl-textfield__input" />
+    <input type="time" class="mdl-textfield__input" />
+    <h6>To</h6>
+    <input type="date" class="mdl-textfield__input" />
+    <input type="time" class="mdl-textfield__input" />
   </div>
   <div class="mdl-dialog__actions">
-    <button type="button" class="mdl-button">Agree</button>
-    <button type="button" class="mdl-button close">Disagree</button>
+    <button type="button" class="mdl-button" id="button_add_Schedules_ok">Ok</button>
+    <button type="button" class="mdl-button close" onclick="document.getElementById('dialog_add_Schedules').close()">Cancel</button>
   </div>
 </dialog>
 
