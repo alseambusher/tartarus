@@ -8,7 +8,8 @@
     "fs-jetpack": "^0.9.0",
     "open": "latest",
     "dialog-polyfill": "latest",
-    "material-design-lite": "latest"
+    "material-design-lite": "latest",
+    "pm2": "latest"
   },
   "engines": {
     "node": "latest"

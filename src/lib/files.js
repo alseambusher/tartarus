@@ -2,9 +2,8 @@
 import { default as encrypt} from "./encrypt";
 
 export class Files {
-  constructor(db, key) {
+  constructor(db) {
     this.db = db;
-    this.key = key;
   }
 
   add(filename, unlockTime){
@@ -14,7 +13,7 @@ export class Files {
       done: false,
       timestamp: new Date().toString()
     };
-    encrypt(filename, key, () => {
+    encrypt(filename, this.key, () => {
       return this.db.insert(data);
     });
   }
@@ -33,5 +32,9 @@ export class Files {
 
   done(_id) {
     this.db.update({ _id: _id}, {done: true});
+  }
+
+  setKey (key)  {
+    this.key = key;
   }
 }

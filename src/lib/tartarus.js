@@ -27,7 +27,10 @@ export function load(){
     if (err) throw err;
   });
 
-  files = new Files(filesDb);
   settings = new Settings(settingsDb);
   schedules = new Schedules(schedulesDb);
+  files = new Files(filesDb);
+  settings.key((key) => {
+    files.setKey(key);
+  });
 }

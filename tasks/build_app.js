@@ -18,6 +18,7 @@ gulp.task('bundle', function () {
     return Promise.all([
         bundle(srcDir.path('background.js'), destDir.path('background.js')),
         bundle(srcDir.path('app.js'), destDir.path('app.js')),
+        bundle(srcDir.path('tartarus-process.js'), destDir.path('tartarus-process.js')),
     ]);
 });
 
