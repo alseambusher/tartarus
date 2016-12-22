@@ -17,9 +17,9 @@ import * as tartarus from "./lib/tartarus";
 var app = remote.app;
 var appDir = jetpack.cwd(app.getAppPath());
 
+tartarus.load();
 document.addEventListener('DOMContentLoaded', function () {
   set_current_content("Files");
-  tartarus.load();
   drawer(document.querySelector(".mdl-layout__drawer"));
   dialogs();
   // show the landing page

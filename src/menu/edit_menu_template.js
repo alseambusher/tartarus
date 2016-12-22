@@ -5,29 +5,17 @@ import { app } from 'electron';
 export var editMenuTemplate = {
   label: 'Help',
   submenu: [
-    { label: "View License", click() { open(karma.links.license);}},
-    { label: "Documentation", click() { open(karma.links.documentation);}},
-    { label: "Issues", click() { open(karma.links.issues);}},
+    { label: "View License", click() { open("https://github.com/alseambusher/tartarus/LICENCE.md");}},
+    { label: "Documentation", click() { open("https://github.com/alseambusher/tartarus/README.md");}},
+    { label: "Issues", click() { open("https://github.com/alseambusher/tartarus/issues");}},
     { type: "separator" },
-    { label: "About", click() { open(karma.links.about_karma);}},
+    { label: "About", click() { open("http://github.com/alseambusher");}},
   ]
 };
 
 export var fileMenuTemplate = {
   label: "File",
   submenu: [
-    { label: "Open New Window", click(){ karma.launch();} },
-    { label: "Restart Karma", click(){ karma.restart();} },
-    { label: "Set Max Heap", click(item, focusedWindow){
-      if(focusedWindow){
-        focusedWindow.send('SET_MAX_HEAP');
-      }
-    } },
-    { label: "Set Java Home", accelerator: 'CmdOrCtrl+J',click(item, focusedWindow){
-      if(focusedWindow){
-        focusedWindow.send('SET_JAVA_HOME');
-      }
-    } },
     { label: "Exit", accelerator: 'CmdOrCtrl+Q', click(){ app.quit(); } },
   ]
 };

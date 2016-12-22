@@ -9,9 +9,9 @@ export var items = {
   Schedules: {
     icon: "query_builder"
   },
-  Settings: {
-    icon: "settings"
-  },
+  // Settings: {
+  //   icon: "settings"
+  // },
   Github: {
     icon: "code",
     onclick: () => {

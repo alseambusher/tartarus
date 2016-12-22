@@ -96,7 +96,6 @@ export default function() {
           document.getElementById("force_count_badge").setAttribute("data-badge", count);
         });
       }, 1000);
-
       document.getElementById("dialog_force").close();
     };
 
