@@ -10,6 +10,8 @@ export class Schedules {
       filename: filename,
       lockTime: lockTime,
       unlockTime: unlockTime,
+      locked: false,
+      done: false,
       timestamp: new Date().toString()
     };
     return this.db.insert(data);
@@ -25,6 +27,14 @@ export class Schedules {
     this.db.find({ _id: _id }, function (err, docs) {
       callback(docs[0]);
     });
+  }
+
+  done(_id) {
+    this.db.update({ _id: _id}, { $set: {done: true}});
+  }
+
+  lock(_id) {
+    this.db.update({ _id: _id}, { $set: {locked: true}});
   }
 
   reload() {
