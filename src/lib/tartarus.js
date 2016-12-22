@@ -16,7 +16,7 @@ var schedulesDb = new Datastore({ filename: __dirname + schedulesDbFile });
 
 export var files, schedules, settings;
 
-export function load(){
+export function load() {
   settingsDb.loadDatabase(function (err) {
     if (err) throw err;
   });
@@ -26,7 +26,6 @@ export function load(){
   schedulesDb.loadDatabase(function (err) {
     if (err) throw err;
   });
-
   settings = new Settings(settingsDb);
   schedules = new Schedules(schedulesDb);
   files = new Files(filesDb);

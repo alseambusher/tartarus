@@ -6,7 +6,7 @@ export class Files {
     this.db = db;
   }
 
-  add(filename, unlockTime){
+  add(filename, unlockTime, callback){
     let data = {
       filename: filename,
       unlockTime: unlockTime,
@@ -14,7 +14,7 @@ export class Files {
       timestamp: new Date().toString()
     };
     encrypt(filename, this.key, () => {
-      return this.db.insert(data);
+      callback(this.db.insert(data));
     });
   }
 
@@ -36,5 +36,9 @@ export class Files {
 
   setKey (key)  {
     this.key = key;
+  }
+
+  reload() {
+    this.db.loadDatabase();
   }
 }

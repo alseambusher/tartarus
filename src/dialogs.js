@@ -33,7 +33,7 @@ export default function() {
       let unlockTime = new Date(date + " " + time).toString();
       if (filenames.length > 0 && unlockTime){
         for (let i=0; i<filenames.length; i++){
-          tartarus.files.add(filenames[i].path, unlockTime);
+          tartarus.files.add(filenames[i].path, unlockTime, tartarus.files.ui_update);
         }
         tartarus.files.ui_update();
         document.getElementById("dialog_add_" + get_current_content()).close();
@@ -41,17 +41,19 @@ export default function() {
     };
 
     document.getElementById("button_add_Schedules_ok").onclick = () => {
-      let filename = document.querySelector("#dialog_add_Schedules input[type='file']").value;
+      let filenames = document.querySelector("#dialog_add_Schedules input[type='file']").files;
       let dates = document.querySelectorAll("#dialog_add_Schedules input[type='date']");
       let times = document.querySelectorAll("#dialog_add_Schedules input[type='time']");
       let lockTime = new Date(dates[0].value + " " + times[0].value).toString();
       let unlockTime = new Date(dates[1].value + " " + times[1].value).toString();
-      if (filename && unlockTime && lockTime){
-        tartarus.schedules.add(filename, lockTime, unlockTime);
+      if (filenames.length > 0 && lockTime && unlockTime){
+        for (let i=0; i<filenames.length; i++){
+          tartarus.schedules.add(filenames[i].path, lockTime, unlockTime);
+        }
         tartarus.schedules.ui_update();
+        document.getElementById("dialog_add_" + get_current_content()).close();
       }
     };
-
   };
 
   init();

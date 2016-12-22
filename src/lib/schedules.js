@@ -27,4 +27,8 @@ export class Schedules {
     });
   }
 
+  reload() {
+    this.db.loadDatabase();
+  }
+
 }

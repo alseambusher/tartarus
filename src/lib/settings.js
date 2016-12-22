@@ -31,4 +31,8 @@ export class Settings {
         setTimeout(() => {this.key(callback);}, 1000);
     });
   }
+
+  reload() {
+    this.db.loadDatabase();
+  }
 }
