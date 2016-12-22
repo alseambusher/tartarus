@@ -1,8 +1,13 @@
-<div id="content_Files" display="none" class="content">
+<div id="content_Files" class="content">
   <%- include('toolbar'); %>
-  <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width:100%">
+  <table class="mdl-data-table mdl-shadow--2dp" style="width:100%">
     <thead>
       <tr>
+        <th>
+          <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="Files-table-header">
+            <input type="checkbox" id="Files-table-header" class="mdl-checkbox__input" />
+          </label>
+        </th>
         <th class="mdl-data-table__cell--non-numeric">File/Folder</th>
         <th class="mdl-data-table__cell--non-numeric">Location</th>
         <th class="mdl-data-table__cell--non-numeric">Unlock Time</th>

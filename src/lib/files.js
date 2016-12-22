@@ -31,7 +31,7 @@ export class Files {
   }
 
   done(_id) {
-    this.db.update({ _id: _id}, {done: true});
+    this.db.update({ _id: _id}, { $set: {done: true}});
   }
 
   setKey (key)  {

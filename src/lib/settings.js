@@ -25,7 +25,10 @@ export class Settings {
 
   key(callback){
     this.db.find({}, function(err, docs) {
-      callback(docs[0].key);
+      if (docs.length > 0)
+        callback(docs[0].key);
+      else
+        setTimeout(() => {this.key(callback);}, 1000);
     });
   }
 }
