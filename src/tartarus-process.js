@@ -75,8 +75,8 @@ function run() {
     });
   });
   tartarus.load();
-  setTimeout(run, 15000);
+  setTimeout(run, 5000);
 }
 
 tartarus.load ();
-setTimeout(run, 15000);
+setTimeout(run, 5000);

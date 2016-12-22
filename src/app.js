@@ -33,6 +33,10 @@ document.addEventListener('DOMContentLoaded', function () {
       UI_set_schedules_page();
     };
   });
+  // force count
+  tartarus.settings.force((count) => {
+    document.getElementById("force_count_badge").setAttribute("data-badge", count);
+  });
   tartarus.files.ui_update = UI_set_files_page;
   tartarus.schedules.ui_update = UI_set_schedules_page;
   tartarus.settings.ui_update = UI_set_settings_page;
@@ -58,8 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 var headerCheckHandler = function(event) {
-  let table = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
-  table.querySelectorAll('tbody').forEach((tbody) => {
+  document.querySelectorAll('#content_'+ get_current_content() +' table tbody').forEach((tbody) => {
     let boxes = tbody.querySelectorAll(".mdl-data-table__select");
     if (event.target.checked) {
       for (let i = 0, length = boxes.length; i < length; i++) {
@@ -82,7 +85,7 @@ function UI_set_files_page(){
       let tr = document.createElement("tr");
       if (doc.done)
         tr.className = "done mdl-color--green-600";
-      tr.innerHTML = '<td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="Files-row['+ doc._id +']"><input type="checkbox" id="Files-row['+ doc._id +']" class="mdl-checkbox__input" /></label></td>';
+      tr.innerHTML = '<td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="Files-'+ doc._id +'"><input type="checkbox" id="Files-'+ doc._id +'" class="mdl-checkbox__input" /></label></td>';
       let tdFilename = document.createElement("td");
       tdFilename.className = "mdl-data-table__cell--non-numeric";
       tdFilename.innerHTML = path.basename(doc.filename);
@@ -120,7 +123,7 @@ function UI_set_schedules_page(){
       else if (doc.locked)
         tr.className = "locked";
 
-      tr.innerHTML = '<td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="Schedules-row['+ doc._id +']"><input type="checkbox" id="Schedules-row['+ doc._id +']" class="mdl-checkbox__input" /></label></td>';
+      tr.innerHTML = '<td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="Schedules-'+ doc._id +'"><input type="checkbox" id="Schedules-'+ doc._id +'" class="mdl-checkbox__input" /></label></td>';
       let tdFilename = document.createElement("td");
       tdFilename.className = "mdl-data-table__cell--non-numeric";
       tdFilename.innerHTML = path.basename(doc.filename);

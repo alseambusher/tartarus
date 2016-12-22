@@ -27,14 +27,29 @@
   </div>
 </dialog>
 
-<dialog class="mdl-dialog" id="dialog_add_Schedules">
-  <h4 class="mdl-dialog__title"></h4>
+<dialog class="mdl-dialog" id="dialog_delete">
+  <h4 class="mdl-dialog__title">Delete</h4>
   <div class="mdl-dialog__content">
     <p>
+      Do you want to clear selected finished/unlocked entries?
     </p>
   </div>
   <div class="mdl-dialog__actions">
-    <button type="button" class="mdl-button">Ok</button>
-    <button type="button" class="mdl-button close">Cancel</button>
+    <button type="button" class="mdl-button" id="button_delete_ok">Ok</button>
+    <button type="button" class="mdl-button close" onclick="document.getElementById('dialog_delete').close()">Cancel</button>
+  </div>
+</dialog>
+
+<dialog class="mdl-dialog" id="dialog_force">
+  <h4 class="mdl-dialog__title">Force Open</h4>
+  <div class="mdl-dialog__content">
+    <p>
+      Do you want to force open selected locked files? <br>
+      Note: This will take some time to take effect.
+    </p>
+  </div>
+  <div class="mdl-dialog__actions">
+    <button type="button" class="mdl-button" id="button_force_ok">Ok</button>
+    <button type="button" class="mdl-button close" onclick="document.getElementById('dialog_force').close()">Cancel</button>
   </div>
 </dialog>

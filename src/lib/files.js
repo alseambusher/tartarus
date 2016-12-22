@@ -34,8 +34,20 @@ export class Files {
     this.db.update({ _id: _id}, { $set: {done: true}});
   }
 
-  setKey (key)  {
+  setKey (key) {
     this.key = key;
+  }
+
+  delete(_id, callback) {
+    this.db.remove({ _id: _id, done: true}, {}, function (err, numRemoved) {
+      callback();
+    });
+  }
+
+  force(_id, callback) {
+    let oldDate = new Date();
+    oldDate.setYear(1992);
+    this.db.update({ _id: _id, done: false}, { $set: {unlockTime: oldDate.toString()}}, callback);
   }
 
   reload() {

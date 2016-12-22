@@ -37,6 +37,23 @@ export class Schedules {
     this.db.update({ _id: _id}, { $set: {locked: true}});
   }
 
+  delete(_id, callback) {
+    this.db.remove({ _id: _id, done: true}, {}, function (err, numRemoved) {
+      if (numRemoved > 0)
+        callback();
+    });
+    this.db.remove({ _id: _id, done: false, locked: false}, {}, function (err, numRemoved) {
+      if (numRemoved > 0)
+        callback();
+    });
+  }
+
+  force(_id, callback) {
+    let oldDate = new Date();
+    oldDate.setYear(1992);
+    this.db.update({ _id: _id, done: false, locked: true}, { $set: {unlockTime: oldDate.toString()}}, callback);
+  }
+
   reload() {
     this.db.loadDatabase();
   }

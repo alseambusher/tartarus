@@ -16,7 +16,8 @@ export class Settings {
     db.find({}, function (err, docs) {
       if (docs.length === 0) {
         let data = {
-          key: guid()
+          key: guid(),
+          force: 0
         };
         db.insert(data);
       }
@@ -29,6 +30,21 @@ export class Settings {
         callback(docs[0].key);
       else
         setTimeout(() => {this.key(callback);}, 1000);
+    });
+  }
+
+  force(callback){
+    this.db.find({}, function(err, docs) {
+      if (docs.length > 0)
+        callback(docs[0].force);
+      else
+        setTimeout(() => {this.force(callback);}, 1000);
+    });
+  }
+
+  incforce(callback){
+    this.force((old) => {
+      this.db.update({}, { $set: {force: old + 1}}, callback);
     });
   }
 

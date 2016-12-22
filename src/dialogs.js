@@ -54,6 +54,52 @@ export default function() {
         document.getElementById("dialog_add_" + get_current_content()).close();
       }
     };
+
+    // delete
+    document.querySelectorAll("#button_delete").forEach((button) => {
+      button.onclick = () => {
+        document.getElementById("dialog_delete").showModal();
+      };
+    });
+
+    document.getElementById("button_delete_ok").onclick = () => {
+      let tbody = document.querySelector('#content_'+ get_current_content() +' table tbody');
+      let ids = [];
+      tbody.querySelectorAll(".mdl-data-table__select input").forEach((checkbox) => {
+        if (checkbox.checked)
+          tartarus[get_current_content().toLowerCase()].delete(checkbox.id.split("-")[1], tartarus[get_current_content().toLowerCase()].ui_update);
+      });
+      tartarus[get_current_content().toLowerCase()].ui_update();
+      document.getElementById("dialog_delete").close();
+    };
+
+    // force
+    document.querySelectorAll("#button_force").forEach((button) => {
+      button.onclick = () => {
+        document.getElementById("dialog_force").showModal();
+      };
+    });
+
+    document.getElementById("button_force_ok").onclick = () => {
+      let tbody = document.querySelector('#content_'+ get_current_content() +' table tbody');
+      let ids = [];
+      tbody.querySelectorAll(".mdl-data-table__select input").forEach((checkbox) => {
+        if (checkbox.checked)
+          tartarus[get_current_content().toLowerCase()].force(checkbox.id.split("-")[1], () => {
+            tartarus.settings.incforce(() => {});
+          });
+      });
+      tartarus[get_current_content().toLowerCase()].ui_update();
+      setTimeout(tartarus[get_current_content().toLowerCase()].ui_update, 1000);
+      setTimeout(() => {
+        tartarus.settings.force((count) => {
+          document.getElementById("force_count_badge").setAttribute("data-badge", count);
+        });
+      }, 1000);
+
+      document.getElementById("dialog_force").close();
+    };
+
   };
 
   init();
