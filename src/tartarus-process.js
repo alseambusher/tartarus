@@ -59,7 +59,7 @@ function run() {
             s_processing.push(file._id);
             console.log("decrypting " + file.filename);
             tartarus.settings.key((password) => {
-              // encrypt
+              // decrypt
               crypt(file.filename, password, () => {
                 var index = s_processing.indexOf(file._id);
                 if (index > -1) {
@@ -75,8 +75,8 @@ function run() {
     });
   });
   tartarus.load();
-  setTimeout(run, 30000);
+  setTimeout(run, 15000);
 }
 
 tartarus.load ();
-setTimeout(run, 30000);
+setTimeout(run, 15000);

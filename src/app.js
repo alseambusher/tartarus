@@ -77,8 +77,11 @@ function UI_set_files_page(){
   let table = document.querySelector("#content_Files tbody");
   table.innerHTML = '';
   tartarus.files.files((docs)=> {
+    let done = [];
     docs.forEach((doc) => {
       let tr = document.createElement("tr");
+      if (doc.done)
+        tr.className = "done mdl-color--green-600";
       tr.innerHTML = '<td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="Files-row['+ doc._id +']"><input type="checkbox" id="Files-row['+ doc._id +']" class="mdl-checkbox__input" /></label></td>';
       let tdFilename = document.createElement("td");
       tdFilename.className = "mdl-data-table__cell--non-numeric";
@@ -92,6 +95,13 @@ function UI_set_files_page(){
       tr.appendChild(tdFilename);
       tr.appendChild(tdLocation);
       tr.appendChild(tdTime);
+      // put the doc which is done at the end of the table
+      if (doc.done)
+        done.push(tr);
+      else
+        table.appendChild(tr);
+    });
+    done.forEach((tr) => {
       table.appendChild(tr);
     });
     componentHandler.upgradeAllRegistered();
@@ -102,9 +112,15 @@ function UI_set_schedules_page(){
   let table = document.querySelector("#content_Schedules tbody");
   table.innerHTML = '';
   tartarus.schedules.files((docs)=> {
+    let done = [];
     docs.forEach((doc) => {
       let tr = document.createElement("tr");
-      tr.innerHTML = '<td><div class="material-icons">edit</div><div class="material-icons">delete</div><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="Schedules-row['+ doc._id +']"><input type="checkbox" id="Schedules-row['+ doc._id +']" class="mdl-checkbox__input" /></label></td>';
+      if (doc.done)
+        tr.className = "done mdl-color--green-600";
+      else if (doc.locked)
+        tr.className = "locked";
+
+      tr.innerHTML = '<td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="Schedules-row['+ doc._id +']"><input type="checkbox" id="Schedules-row['+ doc._id +']" class="mdl-checkbox__input" /></label></td>';
       let tdFilename = document.createElement("td");
       tdFilename.className = "mdl-data-table__cell--non-numeric";
       tdFilename.innerHTML = path.basename(doc.filename);
@@ -121,6 +137,13 @@ function UI_set_schedules_page(){
       tr.appendChild(tdLocation);
       tr.appendChild(tdLockTime);
       tr.appendChild(tdTime);
+      // put the doc which is done at the end of the table
+      if (doc.done)
+        done.push(tr);
+      else
+        table.appendChild(tr);
+    });
+    done.forEach((tr) => {
       table.appendChild(tr);
     });
     componentHandler.upgradeAllRegistered();

@@ -20,7 +20,7 @@ export default function() {
         timeDOM[0].value = now.toTimeString().split(" ")[0];
         if (timeDOM.length > 1){
           let end = new Date();
-          end.setHours(end.getHours() + 1);
+          end.setMinutes(end.getMinutes() + 30);
           timeDOM[1].value = end.toTimeString().split(" ")[0];
         }
       };

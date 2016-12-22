@@ -10,9 +10,9 @@ export var settingsDbFile = "/db/settings.db";
 export var filesDbFile = "/db/files.db";
 export var schedulesDbFile = "/db/schedules.db";
 
-var settingsDb = new Datastore({ filename: __dirname + settingsDbFile });
-var filesDb = new Datastore({ filename: __dirname + filesDbFile });
-var schedulesDb = new Datastore({ filename: __dirname + schedulesDbFile });
+var settingsDb = new Datastore({ filename: __dirname + settingsDbFile, timestampData: true });
+var filesDb = new Datastore({ filename: __dirname + filesDbFile, timestampData: true });
+var schedulesDb = new Datastore({ filename: __dirname + schedulesDbFile, timestampData: true });
 
 export var files, schedules, settings;
 

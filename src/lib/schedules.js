@@ -18,7 +18,7 @@ export class Schedules {
   }
 
   files(callback){
-    this.db.find({}, function (err, docs) {
+    this.db.find({}).sort({ createdAt: -1 }).exec(function (err, docs) {
       callback(docs);
     });
   }
