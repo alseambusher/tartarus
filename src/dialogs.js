@@ -2,6 +2,7 @@
 import { get_current_content } from "./instance";
 import * as tartarus from "./lib/tartarus";
 var dialogPolyfill = require("dialog-polyfill");
+var dateFormat = require('dateformat');
 
 export default function() {
   var init = function() {
@@ -14,7 +15,7 @@ export default function() {
         document.getElementById("dialog_add_" + get_current_content()).showModal();
         let now = new Date();
         document.querySelectorAll("#dialog_add_" + get_current_content() + " input[type='date']").forEach((element) => {
-          element.value = now.getFullYear() + "-" + (parseInt(now.getMonth()) + 1) + "-" + now.getDate();
+          element.value = dateFormat(now, "yyyy-mm-dd");
         });
         let timeDOM = document.querySelectorAll("#dialog_add_" + get_current_content() + " input[type='time']");
         timeDOM[0].value = now.toTimeString().split(" ")[0];
@@ -67,9 +68,9 @@ export default function() {
       let ids = [];
       tbody.querySelectorAll(".mdl-data-table__select input").forEach((checkbox) => {
         if (checkbox.checked)
-          tartarus[get_current_content().toLowerCase()].delete(checkbox.id.split("-")[1], tartarus[get_current_content().toLowerCase()].ui_update);
+          tartarus[get_current_content().toLowerCase()].delete(checkbox.id.split("-")[1], () => {});
       });
-      tartarus[get_current_content().toLowerCase()].ui_update();
+      setTimeout(() => { tartarus[get_current_content().toLowerCase()].ui_update(); }, 500);
       document.getElementById("dialog_delete").close();
     };
 

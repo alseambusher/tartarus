@@ -9,7 +9,8 @@
     "open": "latest",
     "dialog-polyfill": "latest",
     "material-design-lite": "latest",
-    "pm2": "latest"
+    "pm2": "latest",
+    "dateformat": "latest"
   },
   "engines": {
     "node": "latest"
