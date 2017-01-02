@@ -8,7 +8,6 @@ var fs = require("fs");
 var dialogPolyfill = require("dialog-polyfill");
 const {ipcRenderer} = require('electron');
 var glob = require("glob");
-var onFileChange = require("on-file-change");
 import { default as drawer } from "./drawer";
 import { default as dialogs} from "./dialogs";
 import { set_current_content, get_current_content } from "./instance";
