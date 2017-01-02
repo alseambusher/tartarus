@@ -18,13 +18,22 @@ export var files, schedules, settings;
 
 export function load() {
   settingsDb.loadDatabase(function (err) {
-    if (err) throw err;
+    if (err) {
+      setTimeout(load, 100);
+      return;
+    }
   });
   filesDb.loadDatabase(function (err) {
-    if (err) throw err;
+    if (err) {
+      setTimeout(load, 100);
+      return;
+    }
   });
   schedulesDb.loadDatabase(function (err) {
-    if (err) throw err;
+    if (err) {
+      setTimeout(load, 100);
+      return;
+    }
   });
   settings = new Settings(settingsDb);
   schedules = new Schedules(schedulesDb);

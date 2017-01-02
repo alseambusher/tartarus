@@ -26,7 +26,8 @@ if (env.name !== 'production') {
 }
 
 app.on('ready', function () {
-  exec(path.join(__dirname, '/node_modules/pm2/bin/pm2') + ' start ' + path.join(__dirname, '/tartarus-process.js'), function (error, stdout, stderr) {
+  // TODO remove node and find an alternative to pm2 to make the binaries independent of node
+  exec('node '+ path.join(__dirname, '/node_modules/pm2/bin/pm2') + ' start ' + path.join(__dirname, '/tartarus-process.js'), function (error, stdout, stderr) {
     console.log('stdout: ' + stdout);
     console.log('stderr: ' + stderr);
     if (error !== null) {
