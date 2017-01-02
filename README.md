@@ -13,7 +13,8 @@ You can use this in two ways.
 ![schedules](http://i.imgur.com/TzM9yFD.png)
 
 ##Setup - Installer
-Coming soon. See [tartarus-builder](https://github.com/alseambusher/tartarus-builder).
+Install node and then [download](https://github.com/alseambusher/tartarus/releases) binary.  
+(NOTE: Sometimes it might not work the first time you open. Restart app)
 
 ##Setup - Code (dev mode)
 
@@ -35,6 +36,7 @@ You can force open locked content at the expense of increase in "force open coun
 This should be compatible with Linux, Windows and MacOS. However, I have only tested in linux.
 
 ###Todo
-1. Find alternative to `pm2` to run `tartarus-process.js`. Or find a way to package `pm2` using `electron-packager`.
+1. Find alternative to `pm2` to run `tartarus-process.js`. Or find a way to package `pm2` using `electron-packager` so that user wont need node.
 2. Add auto refresh for datatables without `fs.watch`.
+3. Design a cool icon (`.icon`, `.icns` and `.ico`).
 
